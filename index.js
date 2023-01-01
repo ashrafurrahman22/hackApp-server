@@ -24,7 +24,7 @@ async function run(){
         const myCollection = client.db('hackDB').collection('users');
 
         // my api
-        app.get('/user', async(req, res)=>{
+        app.get('/data', async(req, res)=>{
             const query = {};
             const cursor  = myCollection.find(query);
             const result = await cursor.toArray();
@@ -32,7 +32,7 @@ async function run(){
         })
 
          // catch single item
-         app.get('/user/:id', async(req, res)=>{
+         app.get('/data/:id', async(req, res)=>{
             const id = req.params.id;
             const query = {_id: ObjectId(id)};
             const food = await myCollection.findOne(query);
@@ -40,7 +40,7 @@ async function run(){
         });
 
          // post API
-         app.post('/user', async(req, res)=>{
+         app.post('/data', async(req, res)=>{
             const purchase = req.body;
             const result = await myCollection.insertOne(purchase);
             res.send(result);
