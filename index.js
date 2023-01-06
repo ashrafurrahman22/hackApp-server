@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { urlencoded } = require('express');
 const ObjectId = require('mongodb').ObjectId;
 require('dotenv').config()
 const port = process.env.PORT || 5000;
@@ -9,6 +10,8 @@ const app = express();
 // middleware
 app.use(cors())
 app.use(express.json());
+// app.use(urlencoded({ extended: true }));
+app.use(urlencoded({extended:true}));
 
 
 
